@@ -23,13 +23,13 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+TOKEN = os.getenv('BOT_TOKEN')
 OWNER_ID_STR = os.getenv('OWNER_ID')
 ADMIN_ID_STR = os.getenv('ADMIN_ID')
 YOUR_USERNAME = os.getenv('YOUR_USERNAME')
 UPDATE_CHANNEL = os.getenv('UPDATE_CHANNEL')
 
-if not BOT_TOKEN:
+if not TOKEN:
     logger.error("BOT_TOKEN not found in environment variables!")
     raise ValueError("BOT_TOKEN is required. Please set it in .env file or environment variables.")
 
@@ -60,7 +60,7 @@ OWNER_LIMIT = float('inf')
 UPLOAD_BOTS_DIR.mkdir(exist_ok=True)
 IROTECH_DIR.mkdir(exist_ok=True)
 
-bot = Bot(bot_token=BOT_TOKEN)
+bot = Bot(token=TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
 
 bot_scripts = {}
